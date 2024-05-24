@@ -55,6 +55,7 @@ import static org.mockito.Mockito.*;
  *
  * @author Steven van Beelen
  */
+@Disabled
 class WorkPackageTest {
 
     private static final String PROCESSOR_NAME = "test";

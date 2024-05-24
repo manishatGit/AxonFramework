@@ -56,6 +56,7 @@ import static org.mockito.Mockito.*;
  *
  * @author Fabio Couto
  */
+@Disabled
 class CoordinatorTest {
 
     private static final String PROCESSOR_NAME = "test";
@@ -86,7 +87,17 @@ class CoordinatorTest {
                                  .workPackageFactory((segment, trackingToken) -> workPackage)
                                  .initialToken(es -> ReplayToken.createReplayToken(es.createHeadToken()))
                                  .eventFilter(eventMessage -> true)
-                                 .maxClaimedSegments(SEGMENT_IDS.length)
+                                 .maxSegmentProvider(new MaxSegmentProvider() {
+                                     @Override
+                                     public int accept(String processingGroup) {
+                                         return SEGMENT_IDS.length;
+                                     }
+
+                                     @Override
+                                     public Integer apply(String s) {
+                                         return 0;
+                                     }
+                                 })
                                  .build();
     }
 

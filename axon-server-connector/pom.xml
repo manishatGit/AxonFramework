@@ -24,6 +24,7 @@
     </parent>
 
     <artifactId>axon-server-connector</artifactId>
+    <version>4.10.0-SNAPHOT</version>
 
     <name>Axon Framework - Axon Server Connector</name>
     <description>
